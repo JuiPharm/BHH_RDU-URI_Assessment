@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RDU Antibiotic in URI Assessment Templates</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --yellow: #ca8a04;
+      --yellow-soft: #fef9c3;
+      --orange: #ea580c;
+      --orange-soft: #ffedd5;
+      --red: #dc2626;
+      --red-soft: #fee2e2;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Noto Sans Thai", "Segoe UI", Tahoma, sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 30%),
+        radial-gradient(circle at top right, #ede9fe 0, transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb 48%, #7c3aed);
+      color: white;
+      padding: 34px;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      right: -90px;
+      top: -110px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      color: rgba(255,255,255,0.86);
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-btn,
+    .action-btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    .tab-btn {
+      background: white;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .action-btn {
+      background: #111827;
+      color: white;
+    }
+
+    .action-btn.secondary {
+      background: white;
+      color: #111827;
+      border: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226,232,240,0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.22s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.blue { background: var(--primary-soft); color: #1d4ed8; }
+    .badge.green { background: var(--green-soft); color: #15803d; }
+    .badge.yellow { background: var(--yellow-soft); color: #a16207; }
+    .badge.orange { background: var(--orange-soft); color: #c2410c; }
+    .badge.red { background: var(--red-soft); color: #b91c1c; }
+    .badge.purple { background: var(--purple-soft); color: #6d28d9; }
+
+    .patient-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 11px 12px;
+      font: inherit;
+      background: white;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .subcard {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      margin: 14px 0;
+      background: white;
+    }
+
+    .subcard h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .subcard p.note {
+      margin: -2px 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .check-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fbfdff;
+    }
+
+    .check-row.full {
+      grid-column: 1 / -1;
+    }
+
+    .check-row input[type="checkbox"] {
+      width: 19px;
+      height: 19px;
+      accent-color: var(--primary);
+    }
+
+    .check-title {
+      font-weight: 750;
+      font-size: 14px;
+    }
+
+    .check-help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .point {
+      min-width: 34px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: #1d4ed8;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .score-panel {
+      position: sticky;
+      top: 16px;
+    }
+
+    .score-display {
+      text-align: center;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #eff6ff, #ffffff);
+      border: 1px solid #bfdbfe;
+      margin-bottom: 14px;
+    }
+
+    .score-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .score-number {
+      font-size: 54px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+      margin: 9px 0;
+      color: #1d4ed8;
+    }
+
+    .score-max {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .interpretation {
+      border-radius: 20px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .interpretation h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .interpretation p {
+      margin: 8px 0;
+      color: #344054;
+    }
+
+    .interpretation ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #344054;
+    }
+
+    .result-low { background: var(--green-soft); border-color: #86efac; }
+    .result-mid { background: var(--yellow-soft); border-color: #fde68a; }
+    .result-high { background: var(--orange-soft); border-color: #fdba74; }
+    .result-red { background: var(--red-soft); border-color: #fca5a5; }
+    .result-info { background: var(--primary-soft); border-color: #93c5fd; }
+
+    .summary-box {
+      margin-top: 14px;
+      border-radius: 16px;
+      padding: 14px;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      font-size: 13px;
+      color: #475467;
+    }
+
+    .copy-area {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .copy-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .copy-head strong {
+      font-size: 14px;
+    }
+
+    .copy-btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 12px;
+      background: var(--primary);
+      color: white;
+    }
+
+    .summary-textarea {
+      width: 100%;
+      min-height: 210px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      font-family: "Noto Sans Thai", "Segoe UI", Tahoma, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      background: #f8fafc;
+      color: #172033;
+      resize: vertical;
+    }
+
+    .copy-hint {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      background: #111827;
+      color: white;
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.22s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      margin-top: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #475467;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .print-title {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .grid,
+      .patient-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .score-panel {
+        position: static;
+      }
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-header {
+        flex-direction: column;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .page {
+        padding: 0;
+        max-width: none;
+      }
+      .hero, .toolbar, .footer-note {
+        display: none;
+      }
+      .print-title {
+        display: block;
+        margin: 0 0 12px;
+        font-size: 20px;
+      }
+      .section {
+        display: none !important;
+      }
+      .section.active {
+        display: block !important;
+      }
+      .card, .subcard, .interpretation, .score-display {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .score-panel {
+        position: static;
+      }
+      button {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">💊 RDU Antibiotic in URI • Physician & Pharmacist Assessment</div>
+        <h1>แบบประเมิน 3 กลุ่มโรค URI พร้อมการแปลผล</h1>
+        <p>
+          ใช้สำหรับบันทึกเกณฑ์ทางคลินิกก่อนสั่ง antibiotic ในผู้ป่วยเจ็บคอ ไซนัสอักเสบ และไอ/หลอดลมอักเสบ
+          เพื่อสนับสนุน RDU documentation, pharmacist review และ antimicrobial stewardship ในโรงพยาบาลเอกชน
+        </p>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div class="tabs" role="tablist" aria-label="Assessment tabs">
+        <button class="tab-btn active" type="button" data-target="centor">1. Centor / McIsaac</button>
+        <button class="tab-btn" type="button" data-target="sinusitis">2. Sinusitis Criteria</button>
+        <button class="tab-btn" type="button" data-target="bronchitis">3. Bronchitis / Pneumonia</button>
+      </div>
+      <div class="tabs">
+        <button class="action-btn secondary" type="button" onclick="resetActiveForm()">ล้างแบบฟอร์มนี้</button>
+        <button class="action-btn" type="button" onclick="window.print()">พิมพ์ / Save as PDF</button>
+      </div>
+    </div>
+
+    <section class="card" style="margin-bottom:18px;">
+      <div class="patient-grid">
+        <div class="field">
+          <label>HN / Visit No.</label>
+          <input type="text" placeholder="เช่น 123456" />
+        </div>
+        <div class="field">
+          <label>วันที่ประเมิน</label>
+          <input type="text" placeholder="__/__/____" />
+        </div>
+        <div class="field">
+          <label>อายุ</label>
+          <input id="ageInput" type="number" min="0" placeholder="ปี" oninput="syncAgeAdjustment()" />
+        </div>
+        <div class="field">
+          <label>แพ้ยา</label>
+          <input type="text" placeholder="ไม่มี / ระบุยา" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CENTOR SECTION -->
+    <section id="centor" class="section active">
+      <h2 class="print-title">1. Centor / Modified Centor-McIsaac Score</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="section-header">
+            <div class="section-title">
+              <h2>1. Centor / Modified Centor-McIsaac Score</h2>
+              <p>สำหรับผู้ป่วย sore throat, acute pharyngitis หรือ acute tonsillitis</p>
+            </div>
+            <span class="badge blue">GAS Pharyngitis Screening</span>
+          </div>
+
+          <div class="subcard">
+            <h3>Step 0: Viral Features</h3>
+            <p class="note">ถ้ามี viral features เด่น โดยทั่วไปไม่ควรใช้ antibiotic และไม่จำเป็นต้องตรวจ GAS เป็น routine</p>
+            <div class="check-grid">
+              <label class="check-row"><input class="centor-viral" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Cough</span><span class="check-help">มีไอเด่น</span></span><span class="point">V</span></label>
+              <label class="check-row"><input class="centor-viral" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Rhinorrhea / nasal congestion</span><span class="check-help">น้ำมูกหรือคัดจมูก</span></span><span class="point">V</span></label>
+              <label class="check-row"><input class="centor-viral" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Hoarseness</span><span class="check-help">เสียงแหบ</span></span><span class="point">V</span></label>
+              <label class="check-row"><input class="centor-viral" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Conjunctivitis</span><span class="check-help">ตาแดงร่วมด้วย</span></span><span class="point">V</span></label>
+              <label class="check-row full"><input class="centor-viral" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Oral ulcer</span><span class="check-help">แผลในปากหรืออาการเข้ากับ viral syndrome</span></span><span class="point">V</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Centor Criteria</h3>
+            <p class="note">ให้ 1 คะแนนต่อข้อ</p>
+            <div class="check-grid">
+              <label class="check-row"><input class="centor-point" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Fever / history of fever</span><span class="check-help">ไข้หรือประวัติมีไข้</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="centor-point" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Tonsillar exudate / swelling</span><span class="check-help">หนองที่ tonsil หรือ tonsil บวม</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="centor-point" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Tender anterior cervical LN</span><span class="check-help">ต่อมน้ำเหลืองคอด้านหน้ากดเจ็บ</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="centor-point" type="checkbox" onchange="calcCentor()" /><span><span class="check-title">Absence of cough</span><span class="check-help">ไม่มีอาการไอ</span></span><span class="point">+1</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Age Adjustment: Modified Centor / McIsaac</h3>
+            <div class="two-col">
+              <div class="field">
+                <label>Age group</label>
+                <select id="ageAdjust" onchange="calcCentor()">
+                  <option value="0">เลือกอายุ / ไม่ปรับคะแนน</option>
+                  <option value="1">3–14 ปี = +1</option>
+                  <option value="0">15–44 ปี = 0</option>
+                  <option value="-1">≥45 ปี = -1</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>RADT / Throat culture</label>
+                <select id="strepTest" onchange="calcCentor()">
+                  <option value="notdone">Not done / Not available</option>
+                  <option value="positive">Positive</option>
+                  <option value="negative">Negative</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Rationale / Physician note</h3>
+            <textarea placeholder="ระบุเหตุผลหากสั่ง antibiotic เช่น RADT positive, high score ไม่มี viral features, complication, high-risk host, allergy, treatment failure"></textarea>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Modified Centor/McIsaac</th><th>RDU interpretation</th><th>Suggested action</th></tr></thead>
+              <tbody>
+                <tr><td>≤0</td><td>Very low probability of GAS</td><td>No antibiotic; no routine strep test ยกเว้นมีเหตุผลเฉพาะ</td></tr>
+                <tr><td>1</td><td>Low probability of GAS</td><td>No antibiotic; symptomatic treatment และ safety-net advice</td></tr>
+                <tr><td>2–3</td><td>Intermediate probability</td><td>พิจารณา RADT/culture; antibiotic เมื่อ test positive หรือมี rationale ชัดเจน</td></tr>
+                <tr><td>≥4</td><td>Higher probability of GAS</td><td>พิจารณา RADT/culture หรือ antibiotic ตาม hospital guideline และ clinical judgment</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="card score-panel">
+          <div class="score-display">
+            <div class="score-label">Modified Centor / McIsaac</div>
+            <div id="centorScore" class="score-number">0</div>
+            <div class="score-max">Centor <span id="centorBase">0</span>/4 • Age adjustment <span id="ageAdjText">0</span></div>
+          </div>
+          <div id="centorResult" class="interpretation result-low"></div>
+          <div class="summary-box" id="centorSummary"></div>
+          <div class="copy-area">
+            <div class="copy-head">
+              <strong>Copy Summary for EMR / Pharmacist Review</strong>
+              <button class="copy-btn" type="button" onclick="copyFromTextarea('centorCopy')">Copy</button>
+            </div>
+            <textarea id="centorCopy" class="summary-textarea" readonly></textarea>
+            <div class="copy-hint">ข้อความนี้สร้างอัตโนมัติจากข้อมูลที่ติ๊ก สามารถแก้ไขต่อใน EMR ได้</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SINUSITIS SECTION -->
+    <section id="sinusitis" class="section">
+      <h2 class="print-title">2. Sinusitis RDU Criteria Score</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="section-header">
+            <div class="section-title">
+              <h2>2. Sinusitis RDU Criteria Score</h2>
+              <p>สำหรับผู้ป่วย nasal congestion, rhinorrhea, purulent discharge, facial pain/pressure หรือ postnasal drip</p>
+            </div>
+            <span class="badge purple">Local RDU Score</span>
+          </div>
+
+          <div class="subcard">
+            <h3>Major ABRS Criteria</h3>
+            <p class="note">ให้ 1 คะแนนต่อข้อ ใช้เพื่อ RDU documentation ไม่ใช่ validated diagnostic score</p>
+            <div class="check-grid">
+              <label class="check-row full"><input class="sinus-point" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Persistent symptoms</span><span class="check-help">อาการ ≥10 วัน โดยไม่ดีขึ้น</span></span><span class="point">+1</span></label>
+              <label class="check-row full"><input class="sinus-point" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Severe onset</span><span class="check-help">ไข้สูง ≥39°C ร่วมกับ purulent nasal discharge หรือ facial pain ต่อเนื่อง ≥3–4 วัน</span></span><span class="point">+1</span></label>
+              <label class="check-row full"><input class="sinus-point" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Double-worsening</span><span class="check-help">อาการ URI ดีขึ้นแล้วแย่ลงใหม่ เช่น ไข้ ไอ น้ำมูก หรือปวดศีรษะเพิ่มขึ้น</span></span><span class="point">+1</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Optional Severity / Risk Modifiers</h3>
+            <p class="note">ไม่รวมในคะแนนหลัก แต่ควรบันทึกเพื่อประกอบ clinical judgment</p>
+            <div class="check-grid">
+              <label class="check-row"><input class="sinus-risk" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Severe facial pain</span><span class="check-help">ปวดใบหน้ารุนแรง</span></span><span class="point">R</span></label>
+              <label class="check-row"><input class="sinus-risk" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Immunocompromised</span><span class="check-help">ภูมิคุ้มกันบกพร่อง</span></span><span class="point">R</span></label>
+              <label class="check-row"><input class="sinus-risk" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Recent antibiotic use</span><span class="check-help">ได้รับ antibiotic ใน 1 เดือน</span></span><span class="point">R</span></label>
+              <label class="check-row"><input class="sinus-risk" type="checkbox" onchange="calcSinusitis()" /><span><span class="check-title">Treatment failure / recurrent</span><span class="check-help">ไม่ตอบสนองหรือเป็นซ้ำ</span></span><span class="point">R</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Antibiotic decision</h3>
+            <select onchange="calcSinusitis()">
+              <option>No antibiotic / symptomatic treatment</option>
+              <option>Watchful waiting with safety-net advice</option>
+              <option>Antibiotic prescribed with documented ABRS criterion</option>
+              <option>Further evaluation / referral</option>
+            </select>
+          </div>
+
+          <div class="subcard">
+            <h3>Rationale / Physician note</h3>
+            <textarea placeholder="ระบุเหตุผล เช่น persistent ≥10 days, severe onset, double-worsening, high-risk host, allergy, treatment failure, drug choice/duration"></textarea>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Score</th><th>Interpretation</th><th>Suggested RDU decision</th></tr></thead>
+              <tbody>
+                <tr><td>0/3</td><td>Likely viral rhinosinusitis</td><td>Antibiotic generally not indicated</td></tr>
+                <tr><td>1/3</td><td>Meets at least one ABRS criterion</td><td>Acceptable with documented rationale; consider watchful waiting if mild</td></tr>
+                <tr><td>2–3/3</td><td>Stronger support for ABRS</td><td>Antibiotic generally acceptable if choice/dose/duration appropriate</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="card score-panel">
+          <div class="score-display">
+            <div class="score-label">Sinusitis RDU Criteria</div>
+            <div id="sinusScore" class="score-number">0</div>
+            <div class="score-max">out of 3 • Risk modifiers <span id="sinusRiskCount">0</span></div>
+          </div>
+          <div id="sinusResult" class="interpretation result-low"></div>
+          <div class="summary-box" id="sinusSummary"></div>
+          <div class="copy-area">
+            <div class="copy-head">
+              <strong>Copy Summary for EMR / Pharmacist Review</strong>
+              <button class="copy-btn" type="button" onclick="copyFromTextarea('sinusCopy')">Copy</button>
+            </div>
+            <textarea id="sinusCopy" class="summary-textarea" readonly></textarea>
+            <div class="copy-hint">ข้อความนี้สร้างอัตโนมัติจากข้อมูลที่ติ๊ก สามารถแก้ไขต่อใน EMR ได้</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- BRONCHITIS SECTION -->
+    <section id="bronchitis" class="section">
+      <h2 class="print-title">3. Bronchitis / Pneumonia Exclusion RDU Score</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="section-header">
+            <div class="section-title">
+              <h2>3. Bronchitis / Pneumonia Exclusion RDU Score</h2>
+              <p>สำหรับผู้ป่วย cough หรือ acute bronchitis เพื่อประเมิน red flags ที่ทำให้สงสัย pneumonia</p>
+            </div>
+            <span class="badge orange">Pneumonia Red Flags</span>
+          </div>
+
+          <div class="subcard">
+            <h3>Pneumonia Red Flag Score</h3>
+            <p class="note">ให้ 1 คะแนนต่อข้อ คะแนนนี้ช่วยตัดสินใจว่าควรประเมิน pneumonia เพิ่มหรือไม่</p>
+            <div class="check-grid">
+              <label class="check-row"><input class="pna-point" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Fever</span><span class="check-help">Temperature ≥38°C หรือ persistent fever</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="pna-point" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Tachycardia</span><span class="check-help">HR ≥100/min</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="pna-point" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Tachypnea</span><span class="check-help">RR ≥24/min</span></span><span class="point">+1</span></label>
+              <label class="check-row"><input class="pna-point" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Hypoxia</span><span class="check-help">SpO₂ ต่ำกว่าค่าที่ รพ. กำหนด เช่น <95% หรือ <94%</span></span><span class="point">+1</span></label>
+              <label class="check-row full"><input id="focalLung" class="pna-point" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Focal lung findings</span><span class="check-help">focal crackles, bronchial breath sound, egophony, fremitus, dullness หรือ localized decreased breath sound</span></span><span class="point">+1</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Automatic Exclusion from Uncomplicated Bronchitis Pathway</h3>
+            <p class="note">หากมีข้อใดข้อหนึ่ง ควรประเมินเพิ่มเติมและไม่จัดเป็น uncomplicated acute bronchitis โดยอัตโนมัติ</p>
+            <div class="check-grid">
+              <label class="check-row"><input class="bronch-exclude" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Toxic appearance / sepsis concern</span></span><span class="point">!</span></label>
+              <label class="check-row"><input class="bronch-exclude" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Dyspnea / respiratory distress</span></span><span class="point">!</span></label>
+              <label class="check-row"><input class="bronch-exclude" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Hemoptysis</span></span><span class="point">!</span></label>
+              <label class="check-row"><input class="bronch-exclude" type="checkbox" onchange="calcBronchitis()" /><span><span class="check-title">Immunocompromised / frail elderly</span></span><span class="point">!</span></label>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Chest X-ray / Further evaluation</h3>
+            <div class="two-col">
+              <div class="field">
+                <label>CXR decision</label>
+                <select id="cxrDecision" onchange="calcBronchitis()">
+                  <option>Not indicated</option>
+                  <option>Ordered</option>
+                  <option>Normal / no pneumonia</option>
+                  <option>Pneumonia suspected / confirmed</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Antibiotic decision</label>
+                <select onchange="calcBronchitis()">
+                  <option>No antibiotic; uncomplicated acute bronchitis</option>
+                  <option>Symptomatic treatment and safety-net advice</option>
+                  <option>Antibiotic if pneumonia suspected/confirmed</option>
+                  <option>Further evaluation / referral</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="subcard">
+            <h3>Rationale / Physician note</h3>
+            <textarea placeholder="ระบุเหตุผล เช่น pneumonia suspected, abnormal vital signs, focal lung findings, CXR result, high-risk host, alternative diagnosis"></textarea>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Score</th><th>Interpretation</th><th>Suggested action</th></tr></thead>
+              <tbody>
+                <tr><td>0/5</td><td>Pneumonia unlikely if stable</td><td>Acute bronchitis likely; antibiotic generally not indicated</td></tr>
+                <tr><td>1/5</td><td>Low–intermediate concern</td><td>Usually no antibiotic; safety-net advice; consider context</td></tr>
+                <tr><td>2/5</td><td>Intermediate concern</td><td>Consider CXR, especially abnormal vital signs/high-risk host</td></tr>
+                <tr><td>≥3/5</td><td>Higher concern for pneumonia</td><td>Evaluate for pneumonia; CXR and pneumonia guideline if suspected/confirmed</td></tr>
+                <tr><td>Focal finding + abnormal vital sign</td><td>Pneumonia cannot be excluded</td><td>Consider CXR / further evaluation</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="card score-panel">
+          <div class="score-display">
+            <div class="score-label">Pneumonia Red Flag</div>
+            <div id="pnaScore" class="score-number">0</div>
+            <div class="score-max">out of 5 • Exclusions <span id="excludeCount">0</span></div>
+          </div>
+          <div id="pnaResult" class="interpretation result-low"></div>
+          <div class="summary-box" id="pnaSummary"></div>
+          <div class="copy-area">
+            <div class="copy-head">
+              <strong>Copy Summary for EMR / Pharmacist Review</strong>
+              <button class="copy-btn" type="button" onclick="copyFromTextarea('pnaCopy')">Copy</button>
+            </div>
+            <textarea id="pnaCopy" class="summary-textarea" readonly></textarea>
+            <div class="copy-hint">ข้อความนี้สร้างอัตโนมัติจากข้อมูลที่ติ๊ก สามารถแก้ไขต่อใน EMR ได้</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      หมายเหตุ: แบบประเมินนี้ออกแบบเพื่อ RDU documentation และ antibiotic appropriateness review ภายในโรงพยาบาล ไม่ใช้แทน clinical judgment ของแพทย์
+    </p>
+    <div id="toast" class="toast">Copied summary</div>
+  </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.target).classList.add('active');
+      });
+    });
+
+    function countChecked(selector) {
+      return Array.from(document.querySelectorAll(selector)).filter(x => x.checked).length;
+    }
+
+    function checkedLabels(selector) {
+      return Array.from(document.querySelectorAll(selector))
+        .filter(x => x.checked)
+        .map(x => {
+          const row = x.closest('.check-row');
+          const title = row ? row.querySelector('.check-title') : null;
+          return title ? title.textContent.trim() : '';
+        })
+        .filter(Boolean);
+    }
+
+    function getPatientHeader() {
+      const patientInputs = document.querySelectorAll('.patient-grid input');
+      const hn = patientInputs[0]?.value || '____';
+      const date = patientInputs[1]?.value || '____';
+      const age = patientInputs[2]?.value || '____';
+      const allergy = patientInputs[3]?.value || '____';
+      return `HN/Visit: ${hn}\nDate: ${date}\nAge: ${age} years\nDrug allergy: ${allergy}`;
+    }
+
+    function copyFromTextarea(id) {
+      const textArea = document.getElementById(id);
+      const text = textArea.value;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(showToast);
+      } else {
+        textArea.removeAttribute('readonly');
+        textArea.select();
+        document.execCommand('copy');
+        textArea.setAttribute('readonly', true);
+        showToast();
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1400);
+    }
+
+    function listOrNone(items) {
+      return items.length ? items.join(', ') : 'none selected';
+    }
+
+    function setResult(el, className, html) {
+      el.className = 'interpretation ' + className;
+      el.innerHTML = html;
+    }
+
+    function syncAgeAdjustment() {
+      const age = Number(document.getElementById('ageInput').value);
+      const select = document.getElementById('ageAdjust');
+      if (!age) return calcCentor();
+      if (age >= 3 && age <= 14) select.value = '1';
+      else if (age >= 15 && age <= 44) select.value = '0';
+      else if (age >= 45) select.value = '-1';
+      calcCentor();
+    }
+
+    function calcCentor() {
+      const base = countChecked('.centor-point');
+      const viral = countChecked('.centor-viral');
+      const ageAdj = Number(document.getElementById('ageAdjust').value || 0);
+      const total = base + ageAdj;
+      const test = document.getElementById('strepTest').value;
+
+      document.getElementById('centorBase').textContent = base;
+      document.getElementById('ageAdjText').textContent = ageAdj > 0 ? '+' + ageAdj : ageAdj;
+      document.getElementById('centorScore').textContent = total;
+
+      let resultClass = 'result-low';
+      let title = '';
+      let body = '';
+      let rdu = '';
+
+      if (viral > 0) {
+        resultClass = 'result-low';
+        title = 'Likely viral pharyngitis';
+        body = 'พบ viral features ' + viral + ' ข้อ ควรระมัดระวังการใช้ antibiotic แม้คะแนน Centor/McIsaac จะสูงจากบาง criteria';
+        rdu = 'RDU: Antibiotic generally not indicated เว้นแต่มีผลตรวจ positive หรือเหตุผลเฉพาะที่บันทึกชัดเจน';
+      } else if (test === 'positive') {
+        resultClass = 'result-info';
+        title = 'Confirmed / supported GAS pharyngitis';
+        body = 'RADT หรือ culture positive สนับสนุนการใช้ antibiotic';
+        rdu = 'RDU: Appropriate หากเลือก antibiotic, dose และ duration เหมาะสม';
+      } else if (test === 'negative') {
+        resultClass = 'result-low';
+        title = 'Test negative';
+        body = 'ผลตรวจไม่สนับสนุน GAS pharyngitis';
+        rdu = 'RDU: Antibiotic generally not indicated ยกเว้นมี diagnosis/complication อื่น';
+      } else if (total <= 1) {
+        resultClass = 'result-low';
+        title = 'Low probability of GAS';
+        body = 'คะแนนต่ำ โอกาส GAS ต่ำ';
+        rdu = 'RDU: No antibiotic; symptomatic treatment และ safety-net advice';
+      } else if (total <= 3) {
+        resultClass = 'result-mid';
+        title = 'Intermediate probability';
+        body = 'ควรพิจารณา RADT/throat culture ถ้ามีบริการ';
+        rdu = 'RDU: Need test หรือ documented rationale ก่อนสั่ง antibiotic';
+      } else {
+        resultClass = 'result-high';
+        title = 'Higher probability of GAS';
+        body = 'คะแนนสูงขึ้นและไม่มี viral features เด่น';
+        rdu = 'RDU: Acceptable with documented rationale หรือ Appropriate หาก test positive';
+      }
+
+      setResult(document.getElementById('centorResult'), resultClass, `
+        <h3>${title}</h3>
+        <p>${body}</p>
+        <ul><li>${rdu}</li><li>Score เป็นเครื่องมือช่วยตัดสินใจ ไม่แทน clinical judgment</li></ul>
+      `);
+
+      document.getElementById('centorSummary').innerHTML = `
+        <strong>Summary:</strong> Viral features ${viral > 0 ? 'present (' + viral + ')' : 'absent/not selected'} •
+        Centor ${base}/4 • Age adjustment ${ageAdj > 0 ? '+' + ageAdj : ageAdj} •
+        Modified score ${total} • Test: ${test}
+      `;
+
+      const viralList = checkedLabels('.centor-viral');
+      const centorCriteria = checkedLabels('.centor-point');
+      document.getElementById('centorCopy').value =
+`${getPatientHeader()}
+Assessment: Acute pharyngitis/tonsillitis - Centor/Modified Centor-McIsaac RDU assessment
+
+Viral features: ${viral > 0 ? 'present' : 'absent/not documented'}
+- Selected viral features: ${listOrNone(viralList)}
+
+Centor criteria:
+- Positive criteria: ${listOrNone(centorCriteria)}
+- Centor score: ${base}/4
+- Age adjustment: ${ageAdj > 0 ? '+' + ageAdj : ageAdj}
+- Modified Centor/McIsaac score: ${total}
+- RADT/Throat culture: ${test}
+
+Interpretation:
+${title}. ${body}
+
+RDU recommendation:
+${rdu}
+
+Note:
+Score supports RDU documentation and does not replace clinical judgment. If antibiotic is prescribed, document indication, drug choice, dose, duration, allergy status, and rationale.`;
+    }
+
+    function calcSinusitis() {
+      const score = countChecked('.sinus-point');
+      const risks = countChecked('.sinus-risk');
+      document.getElementById('sinusScore').textContent = score;
+      document.getElementById('sinusRiskCount').textContent = risks;
+
+      let resultClass = 'result-low';
+      let title = '';
+      let body = '';
+      let rdu = '';
+
+      if (score === 0) {
+        resultClass = risks > 0 ? 'result-mid' : 'result-low';
+        title = risks > 0 ? 'Likely viral, but risk modifiers present' : 'Likely viral rhinosinusitis';
+        body = 'ยังไม่เข้า major ABRS criteria ได้แก่ persistent, severe onset หรือ double-worsening';
+        rdu = 'RDU: Antibiotic generally not indicated; ให้ symptomatic treatment และ safety-net advice';
+      } else if (score === 1) {
+        resultClass = 'result-mid';
+        title = 'Meets one ABRS criterion';
+        body = 'มีเกณฑ์สนับสนุน bacterial rhinosinusitis อย่างน้อย 1 ข้อ';
+        rdu = 'RDU: Acceptable with documented rationale; อาจพิจารณา watchful waiting หากอาการไม่รุนแรงและ follow-up ได้';
+      } else {
+        resultClass = 'result-high';
+        title = 'Stronger support for ABRS';
+        body = 'มีหลายเกณฑ์สนับสนุน bacterial rhinosinusitis หรือ clinical course รุนแรงกว่า';
+        rdu = 'RDU: Antibiotic generally acceptable หาก drug choice, dose, duration และ allergy เหมาะสม';
+      }
+
+      setResult(document.getElementById('sinusResult'), resultClass, `
+        <h3>${title}</h3>
+        <p>${body}</p>
+        <ul><li>${rdu}</li><li>Purulent nasal discharge อย่างเดียวไม่ควรใช้เป็นเหตุผลให้ antibiotic หากไม่เข้า criteria หลัก</li></ul>
+      `);
+
+      document.getElementById('sinusSummary').innerHTML = `
+        <strong>Summary:</strong> Sinusitis RDU Criteria Score ${score}/3 •
+        Risk modifiers ${risks} • ใช้เพื่อ RDU documentation ไม่ใช่ validated diagnostic score
+      `;
+
+      const sinusCriteria = checkedLabels('.sinus-point');
+      const sinusRisks = checkedLabels('.sinus-risk');
+      document.getElementById('sinusCopy').value =
+`${getPatientHeader()}
+Assessment: Acute rhinosinusitis - Sinusitis RDU Criteria Score
+
+Major ABRS criteria:
+- Selected criteria: ${listOrNone(sinusCriteria)}
+- Sinusitis RDU Criteria Score: ${score}/3
+
+Severity/Risk modifiers:
+- Selected modifiers: ${listOrNone(sinusRisks)}
+
+Interpretation:
+${title}. ${body}
+
+RDU recommendation:
+${rdu}
+
+Note:
+This is a local RDU documentation score, not a validated diagnostic score. Purulent nasal discharge alone should not be used as the sole indication for antibiotic without persistent, severe onset, or double-worsening criteria.`;
+    }
+
+    function calcBronchitis() {
+      const score = countChecked('.pna-point');
+      const excludes = countChecked('.bronch-exclude');
+      const focal = document.getElementById('focalLung').checked;
+      const abnormalVital = Array.from(document.querySelectorAll('.pna-point')).slice(0,4).some(x => x.checked);
+      const cxr = document.getElementById('cxrDecision').value;
+
+      document.getElementById('pnaScore').textContent = score;
+      document.getElementById('excludeCount').textContent = excludes;
+
+      let resultClass = 'result-low';
+      let title = '';
+      let body = '';
+      let rdu = '';
+
+      if (cxr.includes('Pneumonia')) {
+        resultClass = 'result-red';
+        title = 'Pneumonia suspected / confirmed';
+        body = 'ไม่ควรจัดเป็น uncomplicated acute bronchitis';
+        rdu = 'RDU: Manage as pneumonia pathway; antibiotic ตาม guideline pneumonia';
+      } else if (excludes > 0) {
+        resultClass = 'result-red';
+        title = 'Excluded from uncomplicated bronchitis pathway';
+        body = 'มี exclusion criteria ' + excludes + ' ข้อ ควรประเมินเพิ่มเติม';
+        rdu = 'RDU: Need further evaluation; antibiotic decision ขึ้นกับ diagnosis หลังประเมิน';
+      } else if (focal && abnormalVital) {
+        resultClass = 'result-red';
+        title = 'Pneumonia cannot be excluded';
+        body = 'มี focal lung finding ร่วมกับ abnormal vital sign';
+        rdu = 'RDU: Consider CXR / further evaluation; antibiotic ตามผลประเมิน pneumonia';
+      } else if (score === 0) {
+        resultClass = 'result-low';
+        title = 'Pneumonia unlikely if stable';
+        body = 'ไม่พบ red flags สำคัญ';
+        rdu = 'RDU: Acute bronchitis likely; antibiotic generally not indicated';
+      } else if (score === 1) {
+        resultClass = 'result-mid';
+        title = 'Low–intermediate concern';
+        body = 'พบ red flag 1 ข้อ ควรพิจารณาบริบทและให้ safety-net advice';
+        rdu = 'RDU: Usually no antibiotic unless additional concern or alternative bacterial diagnosis';
+      } else if (score === 2) {
+        resultClass = 'result-high';
+        title = 'Intermediate concern for pneumonia';
+        body = 'พบ red flags 2 ข้อ ควรพิจารณา CXR โดยเฉพาะในผู้ป่วย high-risk';
+        rdu = 'RDU: Need further evaluation; antibiotic depends on pneumonia assessment';
+      } else {
+        resultClass = 'result-red';
+        title = 'Higher concern for pneumonia';
+        body = 'พบ red flags หลายข้อ';
+        rdu = 'RDU: Evaluate for pneumonia; consider CXR and guideline-based treatment';
+      }
+
+      setResult(document.getElementById('pnaResult'), resultClass, `
+        <h3>${title}</h3>
+        <p>${body}</p>
+        <ul><li>${rdu}</li><li>สีเสมหะไม่ใช่หลักฐานยืนยัน bacterial infection โดยลำพัง</li></ul>
+      `);
+
+      document.getElementById('pnaSummary').innerHTML = `
+        <strong>Summary:</strong> Pneumonia Red Flag Score ${score}/5 •
+        Exclusion criteria ${excludes} • CXR: ${cxr}
+      `;
+
+      const pnaCriteria = checkedLabels('.pna-point');
+      const exclusionCriteria = checkedLabels('.bronch-exclude');
+      document.getElementById('pnaCopy').value =
+`${getPatientHeader()}
+Assessment: Acute cough/acute bronchitis - Bronchitis/Pneumonia Exclusion RDU assessment
+
+Pneumonia red flags:
+- Selected red flags: ${listOrNone(pnaCriteria)}
+- Pneumonia Red Flag Score: ${score}/5
+
+Automatic exclusion from uncomplicated bronchitis pathway:
+- Selected exclusions: ${listOrNone(exclusionCriteria)}
+
+Chest X-ray/Further evaluation:
+- CXR decision/result: ${cxr}
+
+Interpretation:
+${title}. ${body}
+
+RDU recommendation:
+${rdu}
+
+Note:
+If pneumonia is suspected or confirmed, manage as pneumonia pathway rather than uncomplicated acute bronchitis. Sputum color alone is not sufficient evidence of bacterial infection.`;
+    }
+
+    function resetActiveForm() {
+      const active = document.querySelector('.section.active');
+      active.querySelectorAll('input[type="checkbox"]').forEach(x => x.checked = false);
+      active.querySelectorAll('textarea').forEach(x => x.value = '');
+      active.querySelectorAll('select').forEach(x => x.selectedIndex = 0);
+      if (active.id === 'centor') calcCentor();
+      if (active.id === 'sinusitis') calcSinusitis();
+      if (active.id === 'bronchitis') calcBronchitis();
+    }
+
+    calcCentor();
+    calcSinusitis();
+    calcBronchitis();
+  </script>
+</body>
+</html>
